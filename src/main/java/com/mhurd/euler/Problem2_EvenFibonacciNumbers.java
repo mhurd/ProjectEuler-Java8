@@ -1,5 +1,8 @@
 package com.mhurd.euler;
 
+import com.mhurd.euler.helpers.ConditionalReduceLongStream;
+import com.mhurd.euler.helpers.EulerSolution;
+import com.mhurd.euler.helpers.FibonacciSequence;
 import org.junit.Test;
 
 import java.util.stream.LongStream;
@@ -15,15 +18,15 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * https://projecteuler.net/problem=2
  */
-public class Problem2_EvenFibonacciNumbers implements TimedEulerSolution {
+public class Problem2_EvenFibonacciNumbers implements EulerSolution {
 
     private long solveForMaxValue(final long max) {
         LongStream stream = FibonacciSequence.stream().filter(i -> i % 2 == 0);
-        return new ConditionalReduceLongStream(stream)
+        return ConditionalReduceLongStream.wrap(stream)
                 .conditionalReduce(
                         0,
                         (a, b) -> a + b,
-                        (i -> i < max));
+                        i -> i < max);
     }
 
     @Test

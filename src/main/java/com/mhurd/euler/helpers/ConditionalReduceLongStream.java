@@ -1,4 +1,4 @@
-package com.mhurd.euler;
+package com.mhurd.euler.helpers;
 
 import java.util.Iterator;
 import java.util.function.LongBinaryOperator;
@@ -9,12 +9,16 @@ import java.util.stream.LongStream;
  * Wraps the LongStream to add a function that allows you to run a reduce on an infinite stream
  * by supplying a predicate to indicate when the reduce should exit.
  */
-class ConditionalReduceLongStream {
+public class ConditionalReduceLongStream {
 
     private final LongStream stream;
 
-    ConditionalReduceLongStream(final LongStream stream) {
+    private ConditionalReduceLongStream(final LongStream stream) {
         this.stream = stream;
+    }
+
+    public static ConditionalReduceLongStream wrap(final LongStream stream) {
+        return new ConditionalReduceLongStream(stream);
     }
 
     /**
@@ -27,7 +31,8 @@ class ConditionalReduceLongStream {
      * @param continuePredicate - the predicate indicating whether the reduce should continue
      * @return the reduction
      */
-    long conditionalReduce(final long start, final LongBinaryOperator combiner, final LongPredicate continuePredicate) {
+    public long conditionalReduce(final long start, final LongBinaryOperator combiner,
+                           final LongPredicate continuePredicate) {
         final Iterator<Long> itr = stream.iterator();
         long sum = start;
         for (long i = sum; continuePredicate.test(i); i = itr.next()) {

@@ -1,8 +1,8 @@
-package com.mhurd.euler;
+package com.mhurd.euler.helpers;
 
 import java.util.stream.LongStream;
 
-interface FibonacciSequence extends LongStream {
+public interface FibonacciSequence extends LongStream {
 
     class FibonacciSupplier {
         private long previous = 0L;

@@ -1,5 +1,6 @@
 package com.mhurd.euler;
 
+import com.mhurd.euler.helpers.EulerSolution;
 import org.junit.Test;
 
 import java.util.stream.LongStream;
@@ -12,7 +13,7 @@ import static org.junit.Assert.assertEquals;
  *
  * https://projecteuler.net/problem=1
  */
-public class Problem1_MultiplesOf3And5 implements TimedEulerSolution {
+public class Problem1_MultiplesOf3And5 implements EulerSolution {
 
     private long solve(int to) {
         return LongStream.range(0, to).filter(i -> i % 3 ==  0 || i % 5 == 0).sum();
