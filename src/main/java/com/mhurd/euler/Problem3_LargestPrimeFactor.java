@@ -1,6 +1,6 @@
 package com.mhurd.euler;
 
-import com.mhurd.euler.helpers.ConditionalReduceLongStream;
+import com.mhurd.euler.helpers.LongStreamAdditions;
 import com.mhurd.euler.helpers.EulerSolution;
 import com.mhurd.euler.helpers.Primes;
 import org.junit.Test;
@@ -16,14 +16,14 @@ import static org.junit.Assert.assertEquals;
 public class Problem3_LargestPrimeFactor implements EulerSolution {
 
     private long solveFor(final long targetNumber) {
-        return ConditionalReduceLongStream.wrap(Primes.primes())
+        return LongStreamAdditions.wrap(Primes.primes())
                 .conditionalReduce(
                         2, // start with the first prime
                         (a, b) -> determineHighestPrimeFactor(targetNumber, a, b), // keep the highest prime factor
                         l -> l < Math.sqrt(targetNumber)); // stop when the primes are > than the sqrt of the target
     }
 
-    private long determineHighestPrimeFactor(long targetNumber, long accumulator, long nextPrime) {
+    private long determineHighestPrimeFactor(final long targetNumber, final long accumulator, final long nextPrime) {
         return (nextPrime > accumulator // in case we do out of order processing check that the next prime is greater
                 && targetNumber % nextPrime == 0) ? // has to be a factor of our target number
                     nextPrime : accumulator; // either use the new prime factor or keep the old one

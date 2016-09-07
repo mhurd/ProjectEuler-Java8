@@ -4,7 +4,7 @@ import java.util.stream.LongStream;
 
 public interface Primes {
 
-    static boolean isPrime(long number) {
+    static boolean isPrime(final long number) {
         return number > 1
                 && (number == 2
                     || number == 3

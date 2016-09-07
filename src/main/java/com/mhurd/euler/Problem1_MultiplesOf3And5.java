@@ -15,13 +15,13 @@ import static org.junit.Assert.assertEquals;
  */
 public class Problem1_MultiplesOf3And5 implements EulerSolution {
 
-    private long solve(int to) {
+    private long solve(final int to) {
         return LongStream.range(0, to).filter(i -> i % 3 ==  0 || i % 5 == 0).sum();
     }
 
     @Test
     public void solve() {
-        long result = solve(1000);
+        final long result = solve(1000);
         assertEquals(233168, result);
     }
 

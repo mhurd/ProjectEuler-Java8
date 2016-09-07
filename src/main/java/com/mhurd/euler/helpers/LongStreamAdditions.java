@@ -1,6 +1,7 @@
 package com.mhurd.euler.helpers;
 
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.function.LongBinaryOperator;
 import java.util.function.LongPredicate;
 import java.util.stream.LongStream;
@@ -9,16 +10,16 @@ import java.util.stream.LongStream;
  * Wraps the LongStream to add a function that allows you to run a reduce on an infinite stream
  * by supplying a predicate to indicate when the reduce should exit.
  */
-public class ConditionalReduceLongStream {
+public class LongStreamAdditions {
 
     private final LongStream stream;
 
-    private ConditionalReduceLongStream(final LongStream stream) {
+    private LongStreamAdditions(final LongStream stream) {
         this.stream = stream;
     }
 
-    public static ConditionalReduceLongStream wrap(final LongStream stream) {
-        return new ConditionalReduceLongStream(stream);
+    public static LongStreamAdditions wrap(final LongStream stream) {
+        return new LongStreamAdditions(stream);
     }
 
     /**
@@ -39,6 +40,23 @@ public class ConditionalReduceLongStream {
             sum = combiner.applyAsLong(sum, i);
         }
         return sum;
+    }
+
+    /**
+     * Finds the first item that matches the supplied predicate from this stream.
+     *
+     * @param predicate - the predicate to use
+     * @return the first number
+     */
+    public Optional<Long> findFirst(final LongPredicate predicate) {
+        final Iterator<Long> itr = stream.iterator();
+        while (itr.hasNext()) {
+            long next = itr.next();
+            if (predicate.test(next)) {
+                return Optional.of(next);
+            }
+        }
+        return Optional.empty();
     }
 
 }

@@ -1,6 +1,6 @@
 package com.mhurd.euler;
 
-import com.mhurd.euler.helpers.ConditionalReduceLongStream;
+import com.mhurd.euler.helpers.LongStreamAdditions;
 import com.mhurd.euler.helpers.EulerSolution;
 import com.mhurd.euler.helpers.FibonacciSequence;
 import org.junit.Test;
@@ -21,8 +21,8 @@ import static org.junit.Assert.assertEquals;
 public class Problem2_EvenFibonacciNumbers implements EulerSolution {
 
     private long solveForMaxValue(final long max) {
-        LongStream stream = FibonacciSequence.stream().filter(i -> i % 2 == 0);
-        return ConditionalReduceLongStream.wrap(stream)
+        final LongStream stream = FibonacciSequence.stream().filter(i -> i % 2 == 0);
+        return LongStreamAdditions.wrap(stream)
                 .conditionalReduce(
                         0,
                         (a, b) -> a + b,

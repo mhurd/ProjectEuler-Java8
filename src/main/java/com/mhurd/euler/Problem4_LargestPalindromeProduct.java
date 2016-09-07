@@ -17,8 +17,8 @@ import static org.junit.Assert.*;
  */
 public class Problem4_LargestPalindromeProduct implements EulerSolution {
 
-    private boolean isPalindrome(long number) {
-        char[] chars = String.valueOf(number).toCharArray();
+    private boolean isPalindrome(final long number) {
+        final char[] chars = String.valueOf(number).toCharArray();
         for (int i = 0; i < chars.length; i++) {
             if (chars[i] != chars[chars.length-1-i]) {
                 return  false;
@@ -29,7 +29,7 @@ public class Problem4_LargestPalindromeProduct implements EulerSolution {
 
     @Test
     public void solve() {
-        OptionalLong result = LongStream.range(100, 1000)
+        final OptionalLong result = LongStream.range(100, 1000)
                 .flatMap(i -> LongStream.range(i, 1000)
                         .map(j -> i*j) // get all products of the range
                         .filter(this::isPalindrome)) // only keep the palindromes
