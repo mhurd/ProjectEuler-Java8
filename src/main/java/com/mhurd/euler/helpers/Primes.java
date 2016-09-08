@@ -8,9 +8,10 @@ public interface Primes {
         return number > 1
                 && (number == 2
                     || number == 3
-                    || LongStream
-                           .rangeClosed(2, (long) Math.sqrt((double) number))
-                           .noneMatch(n -> number % n == 0));
+                    || (number % 2 != 0 // gets rid of half the options!
+                        && LongStream
+                            .rangeClosed(2, (long) Math.sqrt((double) number))
+                            .noneMatch(n -> number % n == 0)));
     }
 
     static LongStream primes() {
