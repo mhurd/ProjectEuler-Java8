@@ -2,7 +2,7 @@ package com.mhurd.euler.helpers;
 
 import java.util.stream.LongStream;
 
-public interface EulerSolutionPerformance {
+interface EulerSolutionPerformance {
 
     static long avgTimeInNanos(final EulerSolution solution, final int repeats) {
         long total = LongStream.range(0, repeats).reduce(0, (accumulator, i) -> {
