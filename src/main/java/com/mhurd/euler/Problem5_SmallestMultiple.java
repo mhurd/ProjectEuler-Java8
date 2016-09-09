@@ -1,10 +1,8 @@
 package com.mhurd.euler;
 
 import com.mhurd.euler.helpers.EulerSolution;
-import com.mhurd.euler.helpers.LongStreamAdditions;
-import org.junit.Test;
 
-import java.util.Optional;
+import java.util.OptionalLong;
 import java.util.stream.LongStream;
 
 import static org.junit.Assert.assertEquals;
@@ -17,20 +15,19 @@ import static org.junit.Assert.assertTrue;
  * <p>
  * https://projecteuler.net/problem=5
  */
-public class Problem5_SmallestMultiple implements EulerSolution {
+class Problem5_SmallestMultiple implements EulerSolution {
 
     private boolean isDivisibleByAll(final long number, final LongStream range) {
         return range.allMatch(l -> number % l == 0);
     }
 
-    @Test
     public void solve() {
-        final LongStreamAdditions stream =
-                LongStreamAdditions.wrap(LongStream.iterate(1, l -> l + 1));
-        final Optional<Long> result =
-                stream.findFirst(l -> isDivisibleByAll(l, LongStream.rangeClosed(1, 20)));
+        final OptionalLong result =
+                LongStream.iterate(1, l -> l + 1)
+                        .filter(l -> isDivisibleByAll(l, LongStream.rangeClosed(1, 20)))
+                        .findFirst();
         assertTrue(result.isPresent());
-        assertEquals(Long.valueOf(232792560L), result.get());
+        assertEquals(232792560L, result.getAsLong());
     }
 
 }

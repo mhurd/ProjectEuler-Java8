@@ -1,7 +1,6 @@
 package com.mhurd.euler;
 
 import com.mhurd.euler.helpers.EulerSolution;
-import org.junit.Test;
 
 import java.util.stream.LongStream;
 
@@ -18,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * https://projecteuler.net/problem=6
  */
-public class Problem6_SumSquareDifference implements EulerSolution {
+class Problem6_SumSquareDifference implements EulerSolution {
 
     private long sumOfTheSquare(long max) {
         return LongStream.rangeClosed(0, max)
@@ -31,7 +30,6 @@ public class Problem6_SumSquareDifference implements EulerSolution {
         return sum * sum;
     }
 
-    @Test
     public void solve() {
         final long sumOfTheSquare = sumOfTheSquare(100);
         final long squareOfTheSum = squareOfTheSum(100);

@@ -2,7 +2,6 @@ package com.mhurd.euler;
 
 import com.mhurd.euler.helpers.EulerSolution;
 import com.mhurd.euler.helpers.Primes;
-import org.junit.Test;
 
 import java.util.OptionalLong;
 
@@ -15,9 +14,8 @@ import static org.junit.Assert.assertTrue;
  * <p>
  * https://projecteuler.net/problem=7
  */
-public class Problem7_TenThousandAndFirstPrime implements EulerSolution {
+class Problem7_TenThousandAndFirstPrime implements EulerSolution {
 
-    @Test
     public void solve() {
         OptionalLong result = Primes.primes().skip(10000L).findAny();
         assertTrue(result.isPresent());

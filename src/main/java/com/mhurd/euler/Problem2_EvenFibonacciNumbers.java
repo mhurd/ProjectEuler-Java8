@@ -1,9 +1,8 @@
 package com.mhurd.euler;
 
-import com.mhurd.euler.helpers.LongStreamAdditions;
 import com.mhurd.euler.helpers.EulerSolution;
 import com.mhurd.euler.helpers.FibonacciSequence;
-import org.junit.Test;
+import com.mhurd.euler.helpers.LongStreamAdditions;
 
 import java.util.stream.LongStream;
 
@@ -18,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * https://projecteuler.net/problem=2
  */
-public class Problem2_EvenFibonacciNumbers implements EulerSolution {
+class Problem2_EvenFibonacciNumbers implements EulerSolution {
 
     private long solveForMaxValue(final long max) {
         final LongStream stream = FibonacciSequence.stream().filter(i -> i % 2 == 0);
@@ -29,7 +28,6 @@ public class Problem2_EvenFibonacciNumbers implements EulerSolution {
                         i -> i < max);
     }
 
-    @Test
     public void solve() {
         final long result = solveForMaxValue(4000000);
         assertEquals(4613732, result);

@@ -1,4 +1,4 @@
-package com.mhurd.euler;
+package com.mhurd.euler.helpers;
 
 import com.mhurd.euler.helpers.Primes;
 import org.junit.Test;
