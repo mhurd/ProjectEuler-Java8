@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * https://projecteuler.net/problem=6
  */
-class Problem6_SumSquareDifference implements EulerSolution {
+class Problem006_SumSquareDifference implements EulerSolution {
 
     private long sumOfTheSquare(long max) {
         return LongStream.rangeClosed(0, max)

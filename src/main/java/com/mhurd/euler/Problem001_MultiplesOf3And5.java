@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * https://projecteuler.net/problem=1
  */
-class Problem1_MultiplesOf3And5 implements EulerSolution {
+class Problem001_MultiplesOf3And5 implements EulerSolution {
 
     private long solve(final int to) {
         return LongStream.range(0, to).filter(i -> i % 3 == 0 || i % 5 == 0).sum();

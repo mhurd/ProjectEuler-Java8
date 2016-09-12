@@ -2,11 +2,11 @@ package com.mhurd.euler;
 
 import org.junit.Test;
 
-public class Problem5 {
+public class Problem011 {
 
     @Test
     public void solve() {
-        new Problem5_SmallestMultiple().solve();
+        new Problem011_LargestProductInAGrid().solve();
     }
 
 }

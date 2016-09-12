@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * https://projecteuler.net/problem=2
  */
-class Problem2_EvenFibonacciNumbers implements EulerSolution {
+class Problem002_EvenFibonacciNumbers implements EulerSolution {
 
     private long solveForMaxValue(final long max) {
         final LongStream stream = FibonacciSequence.stream().filter(i -> i % 2 == 0);

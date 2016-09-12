@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * https://projecteuler.net/problem=3
  */
-class Problem3_LargestPrimeFactor implements EulerSolution {
+class Problem003_LargestPrimeFactor implements EulerSolution {
 
     private long solveFor(final long targetNumber) {
         return LongStreamAdditions.wrap(Primes.primes())

@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  * <p>
  * https://projecteuler.net/problem=7
  */
-class Problem7_TenThousandAndFirstPrime implements EulerSolution {
+class Problem007_TenThousandAndFirstPrime implements EulerSolution {
 
     public void solve() {
         OptionalLong result = Primes.primes().skip(10000L).findAny();

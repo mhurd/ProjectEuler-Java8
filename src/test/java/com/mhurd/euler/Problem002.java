@@ -2,11 +2,11 @@ package com.mhurd.euler;
 
 import org.junit.Test;
 
-public class Problem2 {
+public class Problem002 {
 
     @Test
     public void solve() {
-        new Problem2_EvenFibonacciNumbers().solve();
+        new Problem002_EvenFibonacciNumbers().solve();
     }
 
 }

@@ -2,15 +2,15 @@ package com.mhurd.euler;
 
 import org.junit.Test;
 
-import static com.mhurd.euler.Problem4_LargestPalindromeProduct.isPalindrome;
+import static com.mhurd.euler.Problem004_LargestPalindromeProduct.isPalindrome;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class Problem4 {
+public class Problem004 {
 
     @Test
     public void solve() {
-        new Problem4_LargestPalindromeProduct().solve();
+        new Problem004_LargestPalindromeProduct().solve();
     }
 
 

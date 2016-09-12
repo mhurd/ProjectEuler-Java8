@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
  * <p>
  * https://projecteuler.net/problem=5
  */
-class Problem5_SmallestMultiple implements EulerSolution {
+class Problem005_SmallestMultiple implements EulerSolution {
 
     private boolean isDivisibleByAll(final long number, final LongStream range) {
         return range.allMatch(l -> number % l == 0);

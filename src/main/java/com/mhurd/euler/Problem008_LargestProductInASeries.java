@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  * <p>
  * https://projecteuler.net/problem=8
  */
-class Problem8_LargestProductInASeries implements EulerSolution {
+class Problem008_LargestProductInASeries implements EulerSolution {
 
     private static final String number =
                       "73167176531330624919225119674426574742355349194934"

@@ -2,11 +2,11 @@ package com.mhurd.euler;
 
 import org.junit.Test;
 
-public class Problem1 {
+public class Problem009 {
 
     @Test
     public void solve() {
-        new Problem1_MultiplesOf3And5().solve();
+        new Problem009_SpecialPythagoreanTriplet().solve();
     }
 
 }

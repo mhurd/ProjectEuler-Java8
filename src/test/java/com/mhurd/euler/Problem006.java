@@ -2,11 +2,11 @@ package com.mhurd.euler;
 
 import org.junit.Test;
 
-public class Problem6 {
+public class Problem006 {
 
     @Test
     public void solve() {
-        new Problem6_SumSquareDifference().solve();
+        new Problem006_SumSquareDifference().solve();
     }
 
 }

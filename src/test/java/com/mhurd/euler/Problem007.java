@@ -2,11 +2,11 @@ package com.mhurd.euler;
 
 import org.junit.Test;
 
-public class Problem7 {
+public class Problem007 {
 
     @Test
     public void solve() {
-        new Problem7_TenThousandAndFirstPrime().solve();
+        new Problem007_TenThousandAndFirstPrime().solve();
     }
 
 }
