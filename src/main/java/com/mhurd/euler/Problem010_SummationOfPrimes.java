@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 class Problem010_SummationOfPrimes implements EulerSolution {
 
     private long sumOfAllPrimesLessThan(long max) {
-        return LongStreamAdditions.wrap(Primes.primes())
+        return LongStreamAdditions.wrap(Primes.stream())
                 .conditionalReduce(
                         0,
                         (a, b) -> a + b,

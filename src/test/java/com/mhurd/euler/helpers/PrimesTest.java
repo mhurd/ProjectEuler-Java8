@@ -1,6 +1,5 @@
 package com.mhurd.euler.helpers;
 
-import com.mhurd.euler.helpers.Primes;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -12,7 +11,7 @@ public class PrimesTest {
 
     @Test
     public void testPrimes() {
-        LongStream primes = Primes.primes();
+        LongStream primes = Primes.stream();
         Iterator<Long> itr = primes.iterator();
         assertEquals(Long.valueOf(2), itr.next());
         assertEquals(Long.valueOf(3), itr.next());

@@ -3,7 +3,6 @@ package com.mhurd.euler;
 import com.mhurd.euler.helpers.LongStreamAdditions;
 import com.mhurd.euler.helpers.EulerSolution;
 import com.mhurd.euler.helpers.Primes;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 class Problem003_LargestPrimeFactor implements EulerSolution {
 
     private long solveFor(final long targetNumber) {
-        return LongStreamAdditions.wrap(Primes.primes())
+        return LongStreamAdditions.wrap(Primes.stream())
                 .conditionalReduce(
                         2, // start with the first prime
                         (a, b) -> determineHighestPrimeFactor(targetNumber, a, b), // keep the highest prime factor

@@ -14,7 +14,7 @@ public interface Primes {
                 .noneMatch(n -> number % n == 0)));
     }
 
-    static LongStream primes() {
+    static LongStream stream() {
         return LongStream
                 .iterate(0, l -> l + 1)
                 .filter(Primes::isPrime);
