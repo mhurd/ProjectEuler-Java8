@@ -71,7 +71,7 @@ public class LongStreamAdditions {
                                   final LongPredicate continuePredicate) {
         final Iterator<Long> itr = stream.iterator();
         long sum = start;
-        for (long i = sum; continuePredicate.test(i); i = itr.next()) {
+        for (long i = itr.next(); continuePredicate.test(i); i = itr.next()) {
             sum = combiner.applyAsLong(sum, i);
         }
         return sum;

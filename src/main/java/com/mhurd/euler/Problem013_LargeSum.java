@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Work out the first ten digits of the sum of the one-hundred 50-digit numbers.
  * <p>
- * https://projecteuler.net/problem=12
+ * https://projecteuler.net/problem=13
  */
 class Problem013_LargeSum implements EulerSolution {
 
