@@ -1,6 +1,7 @@
 package com.mhurd.euler;
 
 import com.mhurd.euler.helpers.EulerSolution;
+import com.mhurd.euler.helpers.StreamAdditions;
 
 import java.util.stream.Stream;
 
@@ -64,7 +65,7 @@ class Problem019_CountingSundays implements EulerSolution {
         }
 
         DayOfWeek nextDayOfWeek() {
-            int length = DayOfWeek.values().length;
+            final int length = DayOfWeek.values().length;
             for (int i = 0; i < length; i++) {
                 if (DayOfWeek.values()[i] == getDayOfWeek()) {
                     return (i + 1 >=  length) ? DayOfWeek.values()[0] : DayOfWeek.values()[i + 1];
@@ -74,7 +75,7 @@ class Problem019_CountingSundays implements EulerSolution {
         }
 
         Month nextMonth() {
-            int length = Month.values().length;
+            final int length = Month.values().length;
             for (int i = 0; i < length; i++) {
                 if (Month.values()[i] == getMonth()) {
                     return (i + 1 >=  length) ? Month.values()[0] : Month.values()[i + 1];
@@ -90,11 +91,11 @@ class Problem019_CountingSundays implements EulerSolution {
                 // handle Feb and leap years specially
                 return new Date(29, nextDayOfWeek(), Month.February, getYear());
             } else {
-                boolean dayRollover = (getDayOfMonth() + 1 > getMonth().getDays());
-                int newDayOfMonth = (dayRollover) ? 1 : getDayOfMonth() + 1;
-                DayOfWeek newDayOfWeek = nextDayOfWeek();
-                Month newMonth = (dayRollover) ? nextMonth() : getMonth();
-                int newYear = (dayRollover && getMonth() == Month.December) ? getYear() + 1 : getYear();
+                final boolean dayRollover = (getDayOfMonth() + 1 > getMonth().getDays());
+                final int newDayOfMonth = (dayRollover) ? 1 : getDayOfMonth() + 1;
+                final DayOfWeek newDayOfWeek = nextDayOfWeek();
+                final Month newMonth = (dayRollover) ? nextMonth() : getMonth();
+                final int newYear = (dayRollover && getMonth() == Month.December) ? getYear() + 1 : getYear();
                 return new Date(newDayOfMonth, newDayOfWeek, newMonth, newYear);
             }
         }
@@ -165,19 +166,23 @@ class Problem019_CountingSundays implements EulerSolution {
 
     }
 
+    private boolean isSundayAndFirstOfTheMonth(Date date) {
+        return date.getDayOfWeek() == DayOfWeek.Sunday && date.getDayOfMonth() == 1;
+    }
+
+    private int countSundaysOnFirstOfTheMonth() {
+        final Stream<Date> rawDates = DateStream.stream(new Date(1, DayOfWeek.Monday, Month.January, 1900));
+        final Date start = new Date(1, Month.January, 1900);
+        final Date end = new Date(1, Month.January, 2001);
+        final Stream<Date> sundaysOnFirstOfTheMonth = rawDates
+                .filter(d -> d.greaterThan(start))
+                .filter(this::isSundayAndFirstOfTheMonth);
+        return new StreamAdditions<Integer, Date>(sundaysOnFirstOfTheMonth)
+                .conditionalReduce(0, (a, d) -> a + 1, (d) -> d.lessThan(end));
+    }
+
     public void solve() {
-        Date init = new Date(1, DayOfWeek.Monday, Month.January, 1900);
-        Date start = new Date(1, Month.January, 1900);
-        Date end = new Date(1, Month.January, 2001);
-        long result = DateStream.stream(init)
-                .limit(40000) // enough to cover the period in question - this is an infinite stream remember!
-                .filter(d -> d.getDayOfWeek() == DayOfWeek.Sunday
-                        && d.getDayOfMonth() == 1
-                        && d.greaterThan(start)
-                        && d.lessThan(end))
-                .peek(System.out::println)
-                .count();
-        assertEquals(171, result);
+        assertEquals(171, countSundaysOnFirstOfTheMonth());
     }
 
 }
