@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
  * and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
  * Find the sum of the digits in the number 100!
  * <p>
- * https://projecteuler.net/problem=19
+ * https://projecteuler.net/problem=20
  */
 class Problem020_FactorialDigitSum implements EulerSolution {
 
